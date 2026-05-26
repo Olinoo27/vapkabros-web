@@ -1,13 +1,2353 @@
 <!DOCTYPE html>
-<html>
+<html lang="cs">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="noindex" />
-  <title>Vapkabros — Správa obsahu</title>
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script></head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vapkabros — Profesionální tlakové čištění | Rakovník</title>
+<meta name="description" content="Vapkabros — profesionální tlakové čištění zámkové dlažby, fasád a popelnic v okrese Rakovník. Nezávazná kalkulace zdarma.">
+<meta name="keywords" content="mytí zámkové dlažby Rakovník, čištění fasády, mytí popelnic, tlakové čištění, vapka Rakovník, okres Rakovník">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Vapkabros — Profesionální tlakové čištění">
+<meta property="og:description" content="Vrátíme vašim povrchům původní krásu. Okres Rakovník.">
+<meta property="og:type" content="website">
+
+<!-- Favicon (water drop SVG) -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%232E5FFF'/><stop offset='100%25' stop-color='%237C3AED'/></linearGradient></defs><path d='M50 10 C30 35 20 55 20 70 A30 30 0 0 0 80 70 C80 55 70 35 50 10 Z' fill='url(%23g)'/></svg>">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --navy: #0A1F3D;
+  --navy-deep: #050F23;
+  --blue: #2E5FFF;
+  --blue-light: #5B7FFF;
+  --purple: #7C3AED;
+  --purple-light: #A78BFA;
+  --lilac: #C4B5FD;
+  --white: #FFFFFF;
+  --off-white: #F8FAFC;
+  --gray: #64748B;
+  --gray-light: #CBD5E1;
+  --gray-dark: #334155;
+  --gradient: linear-gradient(135deg, #2E5FFF 0%, #7C3AED 100%);
+  --gradient-soft: linear-gradient(135deg, #2E5FFF20 0%, #7C3AED20 100%);
+  --gradient-dark: linear-gradient(135deg, #0A1F3D 0%, #1E1B4B 50%, #2D1B69 100%);
+  --shadow-sm: 0 2px 8px rgba(10, 31, 61, 0.08);
+  --shadow-md: 0 8px 24px rgba(10, 31, 61, 0.12);
+  --shadow-lg: 0 20px 48px rgba(10, 31, 61, 0.18);
+  --shadow-glow: 0 0 40px rgba(124, 58, 237, 0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Sora', -apple-system, sans-serif;
+  background: var(--off-white);
+  color: var(--navy);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* === NAVIGATION === */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(124, 58, 237, 0.1);
+  transition: all 0.3s ease;
+}
+
+.nav-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: var(--navy);
+}
+
+.logo-mark {
+  width: 38px;
+  height: 38px;
+  position: relative;
+}
+
+.logo-text {
+  font-weight: 800;
+  font-size: 1.3rem;
+  letter-spacing: -0.02em;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--navy);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+  position: relative;
+}
+
+.nav-links a:hover {
+  color: var(--purple);
+}
+
+.nav-cta {
+  background: var(--gradient);
+  color: white !important;
+  padding: 0.6rem 1.4rem;
+  border-radius: 100px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.nav-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.menu-toggle span {
+  width: 24px;
+  height: 2px;
+  background: var(--navy);
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* === HERO === */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 8rem 2rem 4rem;
+  overflow: hidden;
+  background: var(--gradient-dark);
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.hero-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.5;
+  animation: float 20s ease-in-out infinite;
+}
+
+.hero-blob:nth-child(1) {
+  width: 600px;
+  height: 600px;
+  background: var(--blue);
+  top: -200px;
+  right: -100px;
+}
+
+.hero-blob:nth-child(2) {
+  width: 500px;
+  height: 500px;
+  background: var(--purple);
+  bottom: -150px;
+  left: -100px;
+  animation-delay: -10s;
+}
+
+.hero-blob:nth-child(3) {
+  width: 300px;
+  height: 300px;
+  background: var(--purple-light);
+  top: 40%;
+  left: 50%;
+  animation-delay: -5s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(40px, -40px) scale(1.1); }
+  66% { transform: translate(-30px, 30px) scale(0.9); }
+}
+
+.hero-noise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  color: white;
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(10px);
+  animation: fadeUp 0.8s ease 0.1s both;
+}
+
+.hero-badge-dot {
+  width: 8px;
+  height: 8px;
+  background: #4ADE80;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4.8rem);
+  line-height: 1.05;
+  font-weight: 700;
+  color: white;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
+  animation: fadeUp 0.8s ease 0.2s both;
+}
+
+.hero h1 .accent {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-weight: 400;
+  background: linear-gradient(135deg, #C4B5FD 0%, #A78BFA 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 540px;
+  margin-bottom: 2.5rem;
+  animation: fadeUp 0.8s ease 0.3s both;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  animation: fadeUp 0.8s ease 0.4s both;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1rem 2rem;
+  border-radius: 100px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.btn-primary {
+  background: var(--gradient);
+  color: white;
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.4);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(124, 58, 237, 0.5);
+}
+
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero visual side */
+.hero-visual {
+  position: relative;
+  animation: fadeUp 1s ease 0.5s both;
+}
+
+.water-drop {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.drop-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 20px 60px rgba(124, 58, 237, 0.5));
+  animation: dropFloat 6s ease-in-out infinite;
+}
+
+@keyframes dropFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(2deg); }
+}
+
+.hero-stats {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 1.2rem 2rem;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+.stat-mini {
+  text-align: center;
+  color: white;
+}
+
+.stat-mini .num {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #C4B5FD 0%, white 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.stat-mini .label {
+  font-size: 0.7rem;
+  opacity: 0.7;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* === SECTION COMMON === */
+section {
+  padding: 6rem 2rem;
+  position: relative;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-eyebrow {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.section-title .accent {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-weight: 400;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-sub {
+  font-size: 1.1rem;
+  color: var(--gray);
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* === BEFORE/AFTER SLIDER === */
+.before-after {
+  background: white;
+}
+
+.ba-wrapper {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  aspect-ratio: 16/10;
+  cursor: ew-resize;
+  user-select: none;
+}
+
+.ba-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ba-after {
+  clip-path: inset(0 0 0 50%);
+}
+
+.ba-slider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  background: white;
+  transform: translateX(-50%);
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  z-index: 3;
+}
+
+.ba-handle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 56px;
+  background: var(--gradient);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 32px rgba(124, 58, 237, 0.5);
+  cursor: ew-resize;
+}
+
+.ba-handle::before,
+.ba-handle::after {
+  content: '';
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 4px;
+}
+
+.ba-handle::before {
+  transform: rotate(135deg);
+  margin-right: 4px;
+}
+
+.ba-handle::after {
+  transform: rotate(-45deg);
+  margin-left: 4px;
+}
+
+.ba-label {
+  position: absolute;
+  top: 1.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  font-weight: 600;
+  font-size: 0.85rem;
+  border-radius: 100px;
+  letter-spacing: 0.1em;
+  z-index: 2;
+  backdrop-filter: blur(10px);
+}
+
+.ba-label.before { left: 1.5rem; }
+.ba-label.after { right: 1.5rem; }
+
+/* === SERVICES === */
+.services {
+  background: var(--off-white);
+  position: relative;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.service-card {
+  background: white;
+  border-radius: 24px;
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  border: 1px solid rgba(124, 58, 237, 0.06);
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.service-card:hover::before {
+  transform: scaleX(1);
+}
+
+.service-icon {
+  width: 64px;
+  height: 64px;
+  background: var(--gradient-soft);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.service-icon svg {
+  width: 32px;
+  height: 32px;
+  stroke: var(--purple);
+  fill: none;
+  stroke-width: 2;
+}
+
+.service-card h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
+}
+
+.service-card p {
+  color: var(--gray);
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.service-features {
+  list-style: none;
+  margin-bottom: 1.5rem;
+}
+
+.service-features li {
+  padding: 0.4rem 0;
+  font-size: 0.9rem;
+  color: var(--gray-dark);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.service-features li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--gradient);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* === WHY US === */
+.why {
+  background: var(--gradient-dark);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.why .section-title {
+  color: white;
+}
+
+.why .section-sub {
+  color: rgba(255,255,255,0.7);
+}
+
+.why-bg-blob {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: var(--purple);
+  filter: blur(150px);
+  opacity: 0.3;
+  border-radius: 50%;
+  top: -200px;
+  right: -200px;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.why-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+.why-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(196, 181, 253, 0.4);
+  transform: translateY(-4px);
+}
+
+.why-number {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 3rem;
+  background: linear-gradient(135deg, #C4B5FD 0%, #7C3AED 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.why-card h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+  color: white;
+}
+
+.why-card p {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.5;
+}
+
+/* === STATS === */
+.stats {
+  background: white;
+  padding: 4rem 2rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.stat-box {
+  text-align: center;
+  padding: 2rem 1rem;
+  border-right: 1px solid var(--gray-light);
+}
+
+.stat-box:last-child { border-right: none; }
+
+.stat-num {
+  font-size: 3.5rem;
+  font-weight: 800;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  color: var(--gray);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* === PRICING === */
+.pricing {
+  background: var(--off-white);
+}
+
+.pricing-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  padding: 0.8rem 1.5rem;
+  background: white;
+  border: 1px solid var(--gray-light);
+  border-radius: 100px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--gray-dark);
+  transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+  background: var(--gradient);
+  color: white;
+  border-color: transparent;
+  box-shadow: var(--shadow-md);
+}
+
+.pricing-content {
+  background: white;
+  border-radius: 28px;
+  padding: 3rem;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(124, 58, 237, 0.08);
+}
+
+.pricing-panel {
+  display: none;
+}
+
+.pricing-panel.active {
+  display: block;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.price-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px dashed var(--gray-light);
+  align-items: start;
+}
+
+.price-item:last-child { border-bottom: none; }
+
+.price-name {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: var(--navy);
+}
+
+.price-desc {
+  font-size: 0.9rem;
+  color: var(--gray);
+}
+
+.price-tag {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  white-space: nowrap;
+  letter-spacing: -0.02em;
+}
+
+.price-tag .unit {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--gray);
+  -webkit-text-fill-color: var(--gray);
+  margin-left: 0.2rem;
+}
+
+.pricing-notes {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: var(--gradient-soft);
+  border-radius: 16px;
+  font-size: 0.9rem;
+  color: var(--gray-dark);
+}
+
+.pricing-notes strong { color: var(--purple); }
+
+/* === ABOUT === */
+.about {
+  background: white;
+  position: relative;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.about-visual {
+  position: relative;
+  aspect-ratio: 4/5;
+  border-radius: 28px;
+  overflow: hidden;
+  background: var(--gradient-dark);
+}
+
+.about-visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 30% 20%, rgba(124, 58, 237, 0.4) 0%, transparent 50%),
+    radial-gradient(circle at 70% 80%, rgba(46, 95, 255, 0.4) 0%, transparent 50%);
+}
+
+.about-card-floating {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  padding: 1.2rem 1.5rem;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.about-card-floating.top {
+  top: 8%;
+  right: -10%;
+  animation: floatY 4s ease-in-out infinite;
+}
+
+.about-card-floating.bottom {
+  bottom: 8%;
+  left: -10%;
+  animation: floatY 4s ease-in-out infinite -2s;
+}
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.about-card-icon {
+  width: 44px;
+  height: 44px;
+  background: var(--gradient);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+.about-card-text strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--navy);
+}
+
+.about-card-text span {
+  font-size: 0.8rem;
+  color: var(--gray);
+}
+
+.about-text h2 {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.about-text p {
+  color: var(--gray-dark);
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+}
+
+.about-quote {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border-left: 4px solid var(--purple);
+  background: var(--gradient-soft);
+  border-radius: 0 12px 12px 0;
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--navy);
+}
+
+/* === CONTACT / FORM === */
+.contact {
+  background: var(--gradient-dark);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact::before {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: var(--blue);
+  filter: blur(150px);
+  opacity: 0.2;
+  border-radius: 50%;
+  top: -100px;
+  left: -100px;
+}
+
+.contact::after {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: var(--purple);
+  filter: blur(150px);
+  opacity: 0.3;
+  border-radius: 50%;
+  bottom: -200px;
+  right: -100px;
+}
+
+.contact .section-title { color: white; }
+.contact .section-sub { color: rgba(255,255,255,0.7); }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 3rem;
+  position: relative;
+  z-index: 2;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-item {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: white;
+}
+
+.contact-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--purple-light);
+  transform: translateX(8px);
+}
+
+.contact-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--gradient);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: white;
+  fill: none;
+  stroke-width: 2;
+}
+
+.contact-detail-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 0.2rem;
+}
+
+.contact-detail-value {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+/* Form */
+.contact-form {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 2.5rem;
+}
+
+.form-header {
+  margin-bottom: 1.5rem;
+}
+
+.form-header h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.4rem;
+  color: white;
+}
+
+.form-header p {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.6);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  color: white;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: rgba(255,255,255,0.4);
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--purple-light);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.15);
+}
+
+.form-select {
+  cursor: pointer;
+}
+
+.form-select option {
+  background: var(--navy);
+  color: white;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+  font-family: inherit;
+}
+
+.calc-result {
+  background: linear-gradient(135deg, rgba(46, 95, 255, 0.15) 0%, rgba(124, 58, 237, 0.15) 100%);
+  border: 1px solid rgba(196, 181, 253, 0.3);
+  border-radius: 14px;
+  padding: 1.2rem;
+  margin: 1rem 0;
+  display: none;
+}
+
+.calc-result.show {
+  display: block;
+  animation: fadeIn 0.4s ease;
+}
+
+.calc-result-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 0.3rem;
+}
+
+.calc-result-value {
+  font-size: 1.6rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #C4B5FD 0%, white 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.calc-result-note {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.5);
+  margin-top: 0.3rem;
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.btn-calc {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.btn-calc:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.form-success {
+  display: none;
+  padding: 1rem;
+  background: rgba(74, 222, 128, 0.15);
+  border: 1px solid rgba(74, 222, 128, 0.3);
+  border-radius: 12px;
+  color: #4ADE80;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+.form-success.show { display: block; animation: fadeIn 0.4s ease; }
+
+/* === FOOTER === */
+.footer {
+  background: var(--navy-deep);
+  color: rgba(255,255,255,0.7);
+  padding: 3rem 2rem 1.5rem;
+}
+
+.footer-grid {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-col h4 {
+  color: white;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.footer-col p,
+.footer-col a {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  display: block;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover {
+  color: var(--purple-light);
+}
+
+.footer-brand {
+  margin-bottom: 1rem;
+}
+
+.footer-brand .logo-text {
+  font-size: 1.4rem;
+}
+
+.footer-tagline {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  max-width: 280px;
+  line-height: 1.6;
+}
+
+.footer-bottom {
+  max-width: 1280px;
+  margin: 1.5rem auto 0;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.4);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* === COOKIE BANNER === */
+.cookie-banner {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+  background: rgba(10, 31, 61, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  border-radius: 18px;
+  padding: 1.5rem;
+  color: white;
+  z-index: 9999;
+  box-shadow: var(--shadow-lg);
+  transform: translateY(120%);
+  transition: transform 0.5s ease;
+}
+
+.cookie-banner.show { transform: translateY(0); }
+
+.cookie-banner h4 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cookie-banner p {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 1rem;
+}
+
+.cookie-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.cookie-btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+
+.cookie-accept {
+  background: var(--gradient);
+  color: white;
+  flex: 1;
+}
+
+.cookie-reject {
+  background: rgba(255,255,255,0.1);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* === SCROLL REVEAL === */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 968px) {
+  .nav-links { 
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    padding: 1.5rem 2rem;
+    gap: 1rem;
+    transform: translateY(-200%);
+    transition: transform 0.3s ease;
+    border-bottom: 1px solid rgba(124, 58, 237, 0.1);
+  }
+  
+  .nav-links.open { transform: translateY(0); }
+  
+  .menu-toggle { display: flex; }
+  
+  .hero-content { grid-template-columns: 1fr; gap: 2rem; }
+  
+  .hero-visual { max-width: 350px; margin: 0 auto; }
+  
+  .services-grid,
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .stat-box {
+    border-right: none;
+    border-bottom: 1px solid var(--gray-light);
+    padding-bottom: 1.5rem;
+  }
+  
+  .stat-box:nth-child(3),
+  .stat-box:nth-child(4) { border-bottom: none; }
+  
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .about-card-floating.top { right: -5%; }
+  .about-card-floating.bottom { left: -5%; }
+  
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .pricing-content { padding: 1.5rem; }
+  
+  .price-item {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  
+  section { padding: 4rem 1rem; }
+  
+  .hero { padding: 7rem 1rem 3rem; }
+}
+
+@media (max-width: 480px) {
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .hero-stats { 
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+</style>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
 <body>
+
+<!-- NAVIGATION -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#home" class="logo">
+      <svg class="logo-mark" viewBox="0 0 100 100">
+        <defs>
+          <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#2E5FFF"/>
+            <stop offset="100%" stop-color="#7C3AED"/>
+          </linearGradient>
+        </defs>
+        <path d="M50 10 C30 35 20 55 20 70 A30 30 0 0 0 80 70 C80 55 70 35 50 10 Z" fill="url(#logoGrad)"/>
+        <circle cx="38" cy="55" r="6" fill="white" opacity="0.4"/>
+        <circle cx="44" cy="48" r="3" fill="white" opacity="0.7"/>
+      </svg>
+      <span class="logo-text">VAPKABROS</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" onclick="closeMenu()">Domů</a></li>
+      <li><a href="#services" onclick="closeMenu()">Služby</a></li>
+      <li><a href="#why" onclick="closeMenu()">Proč my</a></li>
+      <li><a href="#pricing" onclick="closeMenu()">Ceník</a></li>
+      <li><a href="#about" onclick="closeMenu()">O nás</a></li>
+      <li><a href="#contact" class="nav-cta" onclick="closeMenu()">Kontakt</a></li>
+    </ul>
+    <button class="menu-toggle" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <div class="hero-blob"></div>
+    <div class="hero-blob"></div>
+    <div class="hero-blob"></div>
+    <div class="hero-noise"></div>
+  </div>
+  <div class="hero-content">
+    <div>
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Profesionální tlakové čištění · Okres Rakovník
+      </div>
+      <h1>Vrátíme vašim povrchům <span class="accent">původní krásu</span></h1>
+      <p>Specializujeme se na tlakové čištění zámkové dlažby, fasád a popelnic. Profesionální technika, šetrné postupy a férové ceny.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary">
+          Nezávazná kalkulace
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M13 5l7 7-7 7"/>
+          </svg>
+        </a>
+        <a href="#services" class="btn btn-ghost">Naše služby</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <svg class="drop-svg" viewBox="0 0 400 400">
+        <defs>
+          <linearGradient id="dropGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#5B7FFF"/>
+            <stop offset="50%" stop-color="#7C3AED"/>
+            <stop offset="100%" stop-color="#A78BFA"/>
+          </linearGradient>
+          <radialGradient id="dropShine" cx="35%" cy="30%">
+            <stop offset="0%" stop-color="white" stop-opacity="0.6"/>
+            <stop offset="100%" stop-color="white" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <!-- Main drop -->
+        <path d="M200 30 C 130 130, 80 200, 80 260 A 120 120 0 0 0 320 260 C 320 200, 270 130, 200 30 Z" 
+              fill="url(#dropGrad)" />
+        <path d="M200 30 C 130 130, 80 200, 80 260 A 120 120 0 0 0 320 260 C 320 200, 270 130, 200 30 Z" 
+              fill="url(#dropShine)" />
+        <!-- highlights -->
+        <ellipse cx="150" cy="220" rx="25" ry="35" fill="white" opacity="0.25" transform="rotate(-20 150 220)"/>
+        <ellipse cx="170" cy="180" rx="10" ry="14" fill="white" opacity="0.5" transform="rotate(-20 170 180)"/>
+        <!-- small droplets -->
+        <circle cx="60" cy="320" r="12" fill="#7C3AED" opacity="0.7"/>
+        <circle cx="345" cy="300" r="8" fill="#5B7FFF" opacity="0.6"/>
+        <circle cx="80" cy="370" r="6" fill="#A78BFA" opacity="0.8"/>
+      </svg>
+      <div class="hero-stats">
+        <div class="stat-mini">
+          <div class="num">2+</div>
+          <div class="label">Roky</div>
+        </div>
+        <div class="stat-mini">
+          <div class="num">100+</div>
+          <div class="label">Zakázek</div>
+        </div>
+        <div class="stat-mini">
+          <div class="num">99%</div>
+          <div class="label">Záruka</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section class="before-after">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Výsledky práce</span>
+      <h2 class="section-title">Vidíte ten <span class="accent">rozdíl</span>?</h2>
+      <p class="section-sub">Posuňte jezdcem a uvidíte, jak dokážeme proměnit zanedbané povrchy.</p>
+    </div>
+    
+    <div class="ba-wrapper reveal" id="baSlider">
+      <!-- Before image (dirty paving stones) -->
+      <svg class="ba-img" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <pattern id="dirtyStone" x="0" y="0" width="80" height="60" patternUnits="userSpaceOnUse">
+            <rect width="80" height="60" fill="#6B7280"/>
+            <rect x="2" y="2" width="36" height="26" fill="#5B6470" stroke="#2A2F3A" stroke-width="1"/>
+            <rect x="42" y="2" width="36" height="26" fill="#52596A" stroke="#2A2F3A" stroke-width="1"/>
+            <rect x="2" y="32" width="36" height="26" fill="#48515E" stroke="#2A2F3A" stroke-width="1"/>
+            <rect x="42" y="32" width="36" height="26" fill="#555E6B" stroke="#2A2F3A" stroke-width="1"/>
+          </pattern>
+          <radialGradient id="moss" cx="50%" cy="50%">
+            <stop offset="0%" stop-color="#3F5D3F" stop-opacity="0.8"/>
+            <stop offset="100%" stop-color="#3F5D3F" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect width="800" height="500" fill="url(#dirtyStone)"/>
+        <!-- moss spots -->
+        <ellipse cx="120" cy="100" rx="80" ry="40" fill="url(#moss)"/>
+        <ellipse cx="500" cy="200" rx="100" ry="50" fill="url(#moss)"/>
+        <ellipse cx="250" cy="350" rx="120" ry="60" fill="url(#moss)"/>
+        <ellipse cx="650" cy="380" rx="90" ry="45" fill="url(#moss)"/>
+        <ellipse cx="380" cy="80" rx="70" ry="30" fill="url(#moss)"/>
+        <!-- dirt overlay -->
+        <rect width="800" height="500" fill="black" opacity="0.25"/>
+        <!-- stains -->
+        <circle cx="180" cy="280" r="40" fill="#3D2817" opacity="0.5"/>
+        <circle cx="580" cy="100" r="35" fill="#2D1F0F" opacity="0.5"/>
+        <circle cx="700" cy="280" r="50" fill="#3D2817" opacity="0.4"/>
+      </svg>
+      
+      <!-- After image (clean paving stones) -->
+      <svg class="ba-img ba-after" id="baAfter" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <pattern id="cleanStone" x="0" y="0" width="80" height="60" patternUnits="userSpaceOnUse">
+            <rect width="80" height="60" fill="#D4D4D8"/>
+            <rect x="2" y="2" width="36" height="26" fill="#E5E5EB" stroke="#A0A0AA" stroke-width="1"/>
+            <rect x="42" y="2" width="36" height="26" fill="#D6D6DD" stroke="#A0A0AA" stroke-width="1"/>
+            <rect x="2" y="32" width="36" height="26" fill="#DEDEE5" stroke="#A0A0AA" stroke-width="1"/>
+            <rect x="42" y="32" width="36" height="26" fill="#E0E0E7" stroke="#A0A0AA" stroke-width="1"/>
+          </pattern>
+          <linearGradient id="shineCleanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="white" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="white" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <rect width="800" height="500" fill="url(#cleanStone)"/>
+        <rect width="800" height="500" fill="url(#shineCleanGrad)"/>
+        <!-- subtle water sheen -->
+        <ellipse cx="400" cy="100" rx="300" ry="60" fill="white" opacity="0.15"/>
+      </svg>
+      
+      <div class="ba-label before">PŘED</div>
+      <div class="ba-label after">PO</div>
+      
+      <div class="ba-slider" id="baSliderHandle">
+        <div class="ba-handle"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Naše služby</span>
+      <h2 class="section-title">Co pro vás <span class="accent">umyjeme</span></h2>
+      <p class="section-sub">Profesionální tlakové čištění s ohledem na povrch i životní prostředí.</p>
+    </div>
+    
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        </div>
+        <h3>Mytí dlažby, kamene a dřeva</h3>
+        <p>Kompletní obnova vzhledu zámkové dlažby, kamenných i dřevěných ploch.</p>
+        <ul class="service-features">
+          <li>Předčištění profi chemií TENZI</li>
+          <li>Odstranění mastnoty, smogu a hlubokých kořínků</li>
+          <li>Možnost impregnace (Den Braven, Isokor)</li>
+          <li>Dosypání spár křemičitým pískem</li>
+        </ul>
+      </div>
+      
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>Mytí fasád</h3>
+        <p>Šetrné čištění fasád od nečistot, řas, plísní a stárnutí.</p>
+        <ul class="service-features">
+          <li>Chemické předčištění + tlakové mytí</li>
+          <li>Bezpečné pro omítku i nátěr</li>
+          <li>Zahubí řasy a plísně v hloubce</li>
+          <li>Vhodné pro rodinné domy i bytovky</li>
+        </ul>
+      </div>
+      
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+        </div>
+        <h3>Mytí popelnic</h3>
+        <p>Hygienické čištění nádob na odpad — žádný zápach, žádné bakterie.</p>
+        <ul class="service-features">
+          <li>Důkladné vypláchnutí nádoby</li>
+          <li>Dezinfekce a provonění</li>
+          <li>Likviduje bakterie, plísně i larvy</li>
+          <li>Cena již od 150 Kč/ks</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why" id="why">
+  <div class="why-bg-blob"></div>
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow" style="color: var(--lilac); -webkit-text-fill-color: var(--lilac);">Proč právě my</span>
+      <h2 class="section-title">Šest důvodů, proč si vybrat <span class="accent">Vapkabros</span></h2>
+      <p class="section-sub">Nejsme jen další firma s vapkou. Děláme to s vášní, pečlivostí a férovým přístupem.</p>
+    </div>
+    
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-number">01</div>
+        <h3>Profesionální technika</h3>
+        <p>Pracujeme výhradně s profi vybavením, které zaručuje výsledek bez poškození povrchu.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-number">02</div>
+        <h3>Šetrné postupy</h3>
+        <p>Používáme ekologické chemikálie a metody šetrné k povrchům i okolnímu prostředí.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-number">03</div>
+        <h3>Férové ceny</h3>
+        <p>Transparentní ceník, žádné skryté poplatky. Co domluvíme, to platí.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-number">04</div>
+        <h3>Obhlídka zdarma</h3>
+        <p>Přijedeme k vám, zhodnotíme stav povrchu a zašleme nezávaznou kalkulaci.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-number">05</div>
+        <h3>Záruka spokojenosti</h3>
+        <p>Pokud nebudete spokojeni s výsledkem, dojdeme až k vytouženému výsledku.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-number">06</div>
+        <h3>Místní firma z Rakovníka</h3>
+        <p>Jsme tu doma. Známe okolí, jezdíme rychle a vážíme si každého zákazníka v regionu.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-grid">
+    <div class="stat-box reveal">
+      <div class="stat-num" data-target="100" data-suffix="+">0</div>
+      <div class="stat-label">Spokojených zákazníků</div>
+    </div>
+    <div class="stat-box reveal">
+      <div class="stat-num" data-target="2" data-suffix="+">0</div>
+      <div class="stat-label">Roky zkušeností</div>
+    </div>
+    <div class="stat-box reveal">
+      <div class="stat-num" data-target="1000" data-suffix="+">0</div>
+      <div class="stat-label">m² umytého povrchu</div>
+    </div>
+    <div class="stat-box reveal">
+      <div class="stat-num" data-target="99" data-suffix="%">0</div>
+      <div class="stat-label">Spokojenost</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Ceník služeb</span>
+      <h2 class="section-title">Transparentní <span class="accent">ceny</span></h2>
+      <p class="section-sub">Všechny ceny jsou orientační a uvedené za m². Pro popelnice platí ceny za kus. Přesnou kalkulaci dostanete po obhlídce.</p>
+    </div>
+    
+    <div class="pricing-tabs reveal">
+      <button class="tab-btn active" onclick="showTab('dlazba')">Dlažba, kámen, dřevo</button>
+      <button class="tab-btn" onclick="showTab('fasada')">Fasády</button>
+      <button class="tab-btn" onclick="showTab('udrzba')">Údržba a ochrana</button>
+      <button class="tab-btn" onclick="showTab('popelnice')">Popelnice</button>
+    </div>
+    
+    <div class="pricing-content reveal">
+      <div class="pricing-panel active" id="tab-dlazba">
+        <div class="price-item">
+          <div>
+            <div class="price-name">Bez chemie (čistá studená voda)</div>
+            <div class="price-desc">Odstraňuje běžné bláto, prach, lehkou špínu a čerstvý povrchový mech.</div>
+          </div>
+          <div class="price-tag">30–45 Kč<span class="unit">/m²</span></div>
+        </div>
+        <div class="price-item">
+          <div>
+            <div class="price-name">S chemickým předčištěním</div>
+            <div class="price-desc">Profi chemie (TENZI Čistič dlažebních kamenů) uvolní zažranou mastnotu, smog, řasy a hluboké kořínky z pórů materiálu.</div>
+          </div>
+          <div class="price-tag">55–70 Kč<span class="unit">/m²</span></div>
+        </div>
+      </div>
+      
+      <div class="pricing-panel" id="tab-fasada">
+        <div class="price-item">
+          <div>
+            <div class="price-name">S chemickým předčištěním + tlakové mytí</div>
+            <div class="price-desc">Chemie bezpečně zahubí a rozpustí řasy i plísně a odstraní hluboké znečištění bez rizika poškození omítky.</div>
+          </div>
+          <div class="price-tag">55–80 Kč<span class="unit">/m²</span></div>
+        </div>
+      </div>
+      
+      <div class="pricing-panel" id="tab-udrzba">
+        <div class="price-item">
+          <div>
+            <div class="price-name">Impregnace povrchu (proti vodě a pleveli)</div>
+            <div class="price-desc">Standardní polymerová impregnace (Den Braven) — chrání 2–3 roky proti vodě, brání růstu kořínků.</div>
+          </div>
+          <div class="price-tag">75–100 Kč<span class="unit">/m²</span></div>
+        </div>
+        <div class="price-item">
+          <div>
+            <div class="price-name">Prémiová nano-impregnace</div>
+            <div class="price-desc">Isokor SWB — normální plochy, ochrana 10+ let, odolává i olejovým skvrnám. Nebo Isokor Eco — svislé plochy. Příplatek k základní impregnaci.</div>
+          </div>
+          <div class="price-tag">+45–75 Kč<span class="unit">/m²</span></div>
+        </div>
+        <div class="price-item">
+          <div>
+            <div class="price-name">Zasypání křemičitým pískem do spár</div>
+            <div class="price-desc">Kompletní servis včetně dodání sušeného křemičitého písku (frakce 0–2 mm) a jeho pečlivého vmetení do spár.</div>
+          </div>
+          <div class="price-tag">40–60 Kč<span class="unit">/m²</span></div>
+        </div>
+      </div>
+      
+      <div class="pricing-panel" id="tab-popelnice">
+        <div class="price-item">
+          <div>
+            <div class="price-name">Mytí popelnice — základní (čistá voda)</div>
+            <div class="price-desc">Vypláchnutí od hrubých nečistot a usazeného odpadu ze dna a stěn.</div>
+          </div>
+          <div class="price-tag">150 Kč<span class="unit">/ks</span></div>
+        </div>
+        <div class="price-item">
+          <div>
+            <div class="price-name">Mytí popelnice — s dezinfekcí a provoněním</div>
+            <div class="price-desc">Použití dezinfekční chemie, která spolehlivě likviduje zápach, bakterie, plísně a larvy hmyzu.</div>
+          </div>
+          <div class="price-tag">250 Kč<span class="unit">/ks</span></div>
+        </div>
+      </div>
+      
+      <div class="pricing-notes">
+        <strong>📌 Důležité informace:</strong> Ceny jsou orientační a finální kalkulace se odvíjí od stavu povrchu, plochy a dostupnosti. <strong>Doprava v okruhu 10 km od Rakovníka je zdarma.</strong> Nad 10 km se účtuje 10 Kč/km. Pracujeme v okrese Rakovník. Pro přesný odhad nás kontaktujte — <strong>obhlídka je zdarma</strong>.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual reveal" style="background: var(--gradient-dark); display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 2rem; padding: 3rem;">
+        <!-- Veľká kvapka s logom -->
+        <svg viewBox="0 0 280 340" width="220" style="filter: drop-shadow(0 20px 40px rgba(124, 58, 237, 0.4));">
+          <defs>
+            <linearGradient id="aboutDropGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#5B7FFF"/>
+              <stop offset="50%" stop-color="#7C3AED"/>
+              <stop offset="100%" stop-color="#A78BFA"/>
+            </linearGradient>
+            <radialGradient id="aboutShine" cx="35%" cy="30%" r="40%">
+              <stop offset="0%" stop-color="white" stop-opacity="0.6"/>
+              <stop offset="100%" stop-color="white" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <path d="M140 10 C 80 80, 20 160, 20 210 A 120 120 0 0 0 260 210 C 260 160, 200 80, 140 10 Z" fill="url(#aboutDropGrad)"/>
+          <path d="M140 10 C 80 80, 20 160, 20 210 A 120 120 0 0 0 260 210 C 260 160, 200 80, 140 10 Z" fill="url(#aboutShine)"/>
+          <ellipse cx="100" cy="180" rx="30" ry="42" fill="white" opacity="0.25" transform="rotate(-20 100 180)"/>
+          <ellipse cx="110" cy="150" rx="14" ry="18" fill="white" opacity="0.5" transform="rotate(-20 110 150)"/>
+        </svg>
+        
+        <!-- Info karty pod kvapkou -->
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+          <div class="about-card-floating" style="position: relative; top: auto; left: auto; right: auto; bottom: auto; animation: none;">
+            <div class="about-card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div class="about-card-text">
+              <strong>2+ roky</strong>
+              <span>zkušeností</span>
+            </div>
+          </div>
+          <div class="about-card-floating" style="position: relative; top: auto; left: auto; right: auto; bottom: auto; animation: none;">
+            <div class="about-card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            </div>
+            <div class="about-card-text">
+              <strong>100+ zakázek</strong>
+              <span>úspěšně dokončeno</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="about-text reveal">
+        <span class="section-eyebrow">O nás</span>
+        <h2>Bratři, kteří <span class="accent">milují čistotu</span></h2>
+        <p>Jmenujeme se Vapkabros a už více než dva roky vracíme povrchům v okrese Rakovník jejich původní krásu. Začínali jsme jako dva nadšenci s jednou vapkou v dílně. Dnes máme profesionální techniku, desítky spokojených zákazníků a stále stejnou vášeň — udělat z toho, co vypadalo beznadějně, něco, co budete znovu hrdě ukazovat.</p>
+        
+        <div class="about-quote">
+          „Když k vám přijedeme, nejdeme jen umýt dlažbu. Necháme vaším povrchům znovu dýchat."
+        </div>
+        
+        <p>Pracujeme s ohledem na povrch i prostředí kolem něj — používáme šetrné chemikálie, profesionální vybavení a dbáme na detail. Ať už jde o terasu před vaším domem, fasádu rodinného domku nebo popelnice, ke kterým je rok neradno přiblížit, jsme tu pro vás.</p>
+        
+        <a href="#contact" class="btn btn-primary" style="margin-top: 1.5rem;">
+          Domluvit obhlídku
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M13 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow" style="color: var(--lilac); -webkit-text-fill-color: var(--lilac);">Kontakt</span>
+      <h2 class="section-title">Napište nám, <span class="accent">odpovíme rychle</span></h2>
+      <p class="section-sub">Obhlídka i kalkulace jsou zcela zdarma. Stačí napsat nebo zavolat.</p>
+    </div>
+    
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <a href="tel:+420773533521" class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="contact-detail-label">Telefon 1</div>
+            <div class="contact-detail-value">+420 773 533 521</div>
+          </div>
+        </a>
+        
+        <a href="tel:+420774817490" class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="contact-detail-label">Telefon 2</div>
+            <div class="contact-detail-value">+420 774 817 490</div>
+          </div>
+        </a>
+        
+        <a href="mailto:vapkabros@seznam.cz" class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <div class="contact-detail-label">E-mail</div>
+            <div class="contact-detail-value">vapkabros@seznam.cz</div>
+          </div>
+        </a>
+        
+        <a href="https://www.instagram.com/vapkabros" target="_blank" class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </div>
+          <div>
+            <div class="contact-detail-label">Instagram</div>
+            <div class="contact-detail-value">@vapkabros</div>
+          </div>
+        </a>
+        
+        <div class="contact-item" style="cursor: default;">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="contact-detail-label">Oblast působnosti</div>
+            <div class="contact-detail-value">Okres Rakovník</div>
+          </div>
+        </div>
+      </div>
+      
+      <form class="contact-form reveal" id="contactForm" name="poptavka" method="POST" data-netlify="true" onsubmit="handleSubmit(event)">
+        <div class="form-header">
+          <h3>Nezávazná poptávka</h3>
+          <p>Vyplňte formulář a my vám do 24 hodin zašleme orientační kalkulaci.</p>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Jméno a příjmení *</label>
+            <input type="text" id="name" name="name" class="form-input" required placeholder="Jan Novák">
+          </div>
+          <div class="form-group">
+            <label for="phone">Telefon *</label>
+            <input type="tel" id="phone" name="phone" class="form-input" required placeholder="+420 ...">
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="email">E-mail *</label>
+          <input type="email" id="email" name="email" class="form-input" required placeholder="vas@email.cz">
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="service">Typ služby *</label>
+            <select id="service" name="service" class="form-select" required>
+              <option value="">Vyberte službu...</option>
+              <option value="dlazba-bez">Mytí dlažby/kamene — bez chemie</option>
+              <option value="dlazba-chem">Mytí dlažby/kamene — s chemickým předčištěním</option>
+              <option value="fasada-chem">Mytí fasády — s chemickým předčištěním</option>
+              <option value="impregnace">Impregnace povrchu (standardní)</option>
+              <option value="impregnace-nano">Impregnace + nano příplatek</option>
+              <option value="pisek">Zasypání pískem do spár</option>
+              <option value="popelnice-bez">Mytí popelnic — základní</option>
+              <option value="popelnice-chem">Mytí popelnic — s dezinfekcí</option>
+              <option value="jine">Něco jiného</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="area">Plocha (m² / ks)</label>
+            <input type="number" id="area" name="area" class="form-input" min="1" placeholder="Např. 50">
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="distance">Vzdálenost od Rakovníka (km)</label>
+          <input type="number" id="distance" name="distance" class="form-input" min="0" placeholder="Prvních 10 km zdarma, pak 10 Kč/km">
+        </div>
+        
+        <div class="form-group">
+          <label for="message">Zpráva (volitelné)</label>
+          <textarea id="message" name="message" class="form-textarea" placeholder="Popište nám prosím váš povrch — z jakého je materiálu, jaký je stav..."></textarea>
+        </div>
+        
+        <div class="calc-result" id="calcResult">
+          <div class="calc-result-label">Orientační cena</div>
+          <div class="calc-result-value" id="calcValue">— Kč</div>
+          <div class="calc-result-note">Přesnou cenu stanovíme po obhlídce. Doprava se účtuje zvlášť.</div>
+        </div>
+        
+        <div class="form-actions">
+          <button type="button" class="btn btn-calc" onclick="calculatePrice()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="14" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="14" y1="18" x2="16" y2="18"/>
+            </svg>
+            Spočítat orientační cenu
+          </button>
+          <button type="submit" class="btn btn-primary">
+            Odeslat poptávku
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14M13 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+        
+        <div class="form-success" id="formSuccess">
+          ✓ Děkujeme! Vaše poptávka byla odeslána. Ozveme se vám do 24 hodin.
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-col">
+      <div class="footer-brand">
+        <div class="logo">
+          <svg class="logo-mark" viewBox="0 0 100 100">
+            <path d="M50 10 C30 35 20 55 20 70 A30 30 0 0 0 80 70 C80 55 70 35 50 10 Z" fill="url(#logoGrad)"/>
+            <circle cx="38" cy="55" r="6" fill="white" opacity="0.4"/>
+            <circle cx="44" cy="48" r="3" fill="white" opacity="0.7"/>
+          </svg>
+          <span class="logo-text">VAPKABROS</span>
+        </div>
+      </div>
+      <p class="footer-tagline">Profesionální tlakové čištění zámkové dlažby, fasád a popelnic. Okres Rakovník.</p>
+    </div>
+    
+    <div class="footer-col">
+      <h4>Kontakt</h4>
+      <a href="tel:+420773533521">+420 773 533 521</a>
+      <a href="tel:+420774817490">+420 774 817 490</a>
+      <a href="mailto:vapkabros@seznam.cz">vapkabros@seznam.cz</a>
+      <a href="https://www.instagram.com/vapkabros" target="_blank">Instagram</a>
+    </div>
+    
+    <div class="footer-col">
+      <h4>Firma</h4>
+      <p>Vapkabros</p>
+      <p>IČO: 24388696</p>
+      <p>Okres Rakovník</p>
+    </div>
+    
+    <div class="footer-col">
+      <h4>Navigace</h4>
+      <a href="#services">Služby</a>
+      <a href="#pricing">Ceník</a>
+      <a href="#about">O nás</a>
+      <a href="#contact">Kontakt</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 Vapkabros · Všechna práva vyhrazena</div>
+    <div>
+      <a href="#" style="display: inline; margin-right: 1rem;">Zásady ochrany osobních údajů</a>
+      <a href="#" style="display: inline;">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<!-- COOKIE BANNER -->
+<div class="cookie-banner" id="cookieBanner">
+  <h4>🍪 Soubory cookies</h4>
+  <p>Tato stránka používá cookies pro zajištění její správné funkce. Můžete si vybrat, zda je chcete přijmout.</p>
+  <div class="cookie-buttons">
+    <button class="cookie-btn cookie-reject" onclick="cookieAction(false)">Odmítnout</button>
+    <button class="cookie-btn cookie-accept" onclick="cookieAction(true)">Přijmout</button>
+  </div>
+</div>
+
+<script>
+// === MOBILE MENU ===
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('navLinks').classList.remove('open');
+}
+
+// === BEFORE/AFTER SLIDER ===
+(function() {
+  const slider = document.getElementById('baSlider');
+  const handle = document.getElementById('baSliderHandle');
+  const afterImg = document.getElementById('baAfter');
+  let isDragging = false;
+  
+  function setSliderPos(x) {
+    const rect = slider.getBoundingClientRect();
+    let pct = ((x - rect.left) / rect.width) * 100;
+    pct = Math.max(0, Math.min(100, pct));
+    handle.style.left = pct + '%';
+    afterImg.style.clipPath = `inset(0 0 0 ${pct}%)`;
+  }
+  
+  function startDrag(e) {
+    isDragging = true;
+    e.preventDefault();
+  }
+  function endDrag() { isDragging = false; }
+  function onMove(e) {
+    if (!isDragging) return;
+    const x = e.touches ? e.touches[0].clientX : e.clientX;
+    setSliderPos(x);
+  }
+  
+  slider.addEventListener('mousedown', (e) => { startDrag(e); onMove(e); });
+  slider.addEventListener('touchstart', (e) => { startDrag(e); onMove(e); });
+  window.addEventListener('mousemove', onMove);
+  window.addEventListener('touchmove', onMove);
+  window.addEventListener('mouseup', endDrag);
+  window.addEventListener('touchend', endDrag);
+  
+  slider.addEventListener('click', (e) => {
+    onMove(e);
+  });
+})();
+
+// === PRICING TABS ===
+function showTab(name) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.pricing-panel').forEach(p => p.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('tab-' + name).classList.add('active');
+}
+
+// === SCROLL REVEAL ===
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      // count up stats
+      if (entry.target.classList.contains('stat-box')) {
+        const num = entry.target.querySelector('.stat-num');
+        const target = parseInt(num.dataset.target);
+        animateCount(num, target);
+      }
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+function animateCount(el, target) {
+  if (el.dataset.counted) return;
+  el.dataset.counted = 'true';
+  const suffix = el.dataset.suffix || '';
+  let current = 0;
+  const duration = 2000;
+  const steps = 60;
+  const increment = target / steps;
+  const interval = duration / steps;
+  const counter = setInterval(() => {
+    current += increment;
+    if (current >= target) {
+      current = target;
+      clearInterval(counter);
+    }
+    el.textContent = Math.floor(current).toLocaleString('cs-CZ') + suffix;
+  }, interval);
+}
+
+// === PRICE CALCULATOR ===
+const priceMap = {
+  'dlazba-bez':       { min: 30,  max: 45,  unit: 'm²' },
+  'dlazba-chem':      { min: 55,  max: 70,  unit: 'm²' },
+  'fasada-chem':      { min: 55,  max: 80,  unit: 'm²' },
+  'impregnace':       { min: 75,  max: 100, unit: 'm²' },
+  'impregnace-nano':  { min: 120, max: 175, unit: 'm²' },
+  'pisek':            { min: 40,  max: 60,  unit: 'm²' },
+  'popelnice-bez':    { min: 150, max: 150, unit: 'ks' },
+  'popelnice-chem':   { min: 250, max: 250, unit: 'ks' },
+  'jine':             null
+};
+
+function calculatePrice() {
+  const service = document.getElementById('service').value;
+  const area = parseInt(document.getElementById('area').value) || 0;
+  const distance = parseInt(document.getElementById('distance').value) || 0;
+  const result = document.getElementById('calcResult');
+  const value = document.getElementById('calcValue');
+  const note = result.querySelector('.calc-result-note');
+  
+  if (!service || service === 'jine') {
+    value.textContent = 'Kontaktujte nás pro kalkulaci';
+    note.textContent = 'Pro tuto službu připravíme individuální nabídku.';
+    result.classList.add('show');
+    return;
+  }
+  if (!area || area < 1) {
+    value.textContent = 'Zadejte plochu (m² nebo ks)';
+    note.textContent = 'Pro výpočet je třeba zadat plochu nebo počet kusů.';
+    result.classList.add('show');
+    return;
+  }
+  
+  const p = priceMap[service];
+  const minTotal = p.min * area;
+  const maxTotal = p.max * area;
+  // Doprava: prvních 10 km zdarma, pak 10 Kč/km
+  const billableKm = Math.max(0, distance - 10);
+  const transport = billableKm * 10;
+  const minWithTransport = minTotal + transport;
+  const maxWithTransport = maxTotal + transport;
+  
+  const serviceText = (p.min === p.max)
+    ? `${minTotal.toLocaleString('cs-CZ')} Kč`
+    : `${minTotal.toLocaleString('cs-CZ')} – ${maxTotal.toLocaleString('cs-CZ')} Kč`;
+  
+  if (distance > 0) {
+    const totalText = (p.min === p.max)
+      ? `${minWithTransport.toLocaleString('cs-CZ')} Kč`
+      : `${minWithTransport.toLocaleString('cs-CZ')} – ${maxWithTransport.toLocaleString('cs-CZ')} Kč`;
+    value.textContent = totalText;
+    if (distance <= 10) {
+      note.innerHTML = `Služba: ${serviceText} · <strong>Doprava zdarma</strong> (do 10 km od Rakovníka). Přesnou cenu stanovíme po obhlídce.`;
+    } else {
+      note.innerHTML = `Služba: ${serviceText} · Doprava (${billableKm} km nad 10 km × 10 Kč): <strong>${transport.toLocaleString('cs-CZ')} Kč</strong>. Přesnou cenu stanovíme po obhlídce.`;
+    }
+  } else {
+    value.textContent = serviceText;
+    note.innerHTML = 'Cena bez dopravy. Prvních 10 km od Rakovníka zdarma, pak 10 Kč/km.';
+  }
+  result.classList.add('show');
+}
+
+// === FORM SUBMIT ===
+function handleSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const formData = new FormData(form);
+  
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams(formData).toString()
+  })
+  .then(() => {
+    const successBox = document.getElementById('formSuccess');
+    successBox.classList.add('show');
+    form.reset();
+    document.getElementById('calcResult').classList.remove('show');
+    setTimeout(() => successBox.classList.remove('show'), 6000);
+  })
+  .catch((error) => {
+    alert('Chyba při odesílání. Zkuste to prosím znovu nebo nás kontaktujte telefonicky.');
+  });
+}
+
+// === COOKIE BANNER ===
+window.addEventListener('load', () => {
+  if (!localStorage.getItem('cookieChoice')) {
+    setTimeout(() => {
+      document.getElementById('cookieBanner').classList.add('show');
+    }, 1500);
+  }
+});
+
+function cookieAction(accept) {
+  // localStorage je tu úmyselne; pri lokálnom náhľade fallback do session memory
+  try {
+    localStorage.setItem('cookieChoice', accept ? 'accepted' : 'rejected');
+  } catch(e) {}
+  document.getElementById('cookieBanner').classList.remove('show');
+}
+
+// === NAV SCROLL EFFECT ===
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('.nav');
+  if (window.scrollY > 50) {
+    nav.style.background = 'rgba(255, 255, 255, 0.9)';
+    nav.style.boxShadow = '0 4px 20px rgba(10, 31, 61, 0.06)';
+  } else {
+    nav.style.background = 'rgba(255, 255, 255, 0.7)';
+    nav.style.boxShadow = 'none';
+  }
+});
+</script>
+
 <script>
   if (window.netlifyIdentity) {
     window.netlifyIdentity.on("init", user => {
@@ -18,5 +2358,6 @@
       }
     });
   }
-</script></body>
+</script>
+</body>
 </html>

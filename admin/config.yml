@@ -1,0 +1,20 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "settings"
+    label: "Nastaveni webu"
+    files:
+      - name: "kontakt"
+        label: "Kontaktni udaje"
+        file: "data/kontakt.json"
+        fields:
+          - { label: "Telefon 1", name: "telefon1", widget: "string" }
+          - { label: "Telefon 2", name: "telefon2", widget: "string" }
+          - { label: "E-mail", name: "email", widget: "string" }
+          - { label: "Oblast pusobnosti", name: "oblast", widget: "string" }
+          - { label: "ICO", name: "ico", widget: "string" }
